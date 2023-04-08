@@ -173,6 +173,12 @@ main{
 }
 
 /**CARRITO**/
+.contenedor-carrito{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
 .carrito-vacio{
     color: var(--clr-white);
     display: none;
