@@ -187,9 +187,12 @@ const productos = [
 /** Con este código llenaremos los productos del array al id #contenedor-productos */
 
 
+
+
+
 /*Aquí añadiremos la function del login */
 function login() {
-    var user, password
+    var user, password;
 
     user =  document.getElementById("usuario").value;
     password = document.getElementById("contrasena").value;
