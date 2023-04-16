@@ -185,7 +185,24 @@ const productos = [
     }
 ];
 /** Con este código llenaremos los productos del array al id #contenedor-productos */
+const contenedorProductos = document.querySelector("#contenedor-productos");
 
+function CargarProductos(){
+    productos.forEach(producto => {
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+            <img class="producto-imagen" src="${producto.imagen}" alt="">
+            <div class="producto-detalles">
+                    <h3 class="producto-titulo">Abrigo 01</h3>
+            
+            </div>
+        
+        
+        `
+
+    })
+}
 
 
 
