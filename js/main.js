@@ -208,6 +208,7 @@ function cargarProductos(productosElegidos){
 
         contenedorProductos.append(div);
     })
+    actualizarBotonesAgregar();
 }
 cargarProductos(productos);
 
@@ -236,7 +237,18 @@ botonesCategorias.forEach(boton =>{
 
 function actualizarBotonesAgregar(){
     botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+    botonesAgregar.forEach( boton=> {
+        boton.addEventListener("click", agregarAlCarrito);
+
+    });
 }
+
+
+
+const productosEnCarrito = [];
+
+function agregarAlCarrito(){}
 
 
 
