@@ -186,23 +186,44 @@ const productos = [
 ];
 /** Con este código llenaremos los productos del array al id #contenedor-productos */
 const contenedorProductos = document.querySelector("#contenedor-productos");
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
 
-function CargarProductos(){
+function cargarProductos(){
     productos.forEach(producto => {
+
         const div = document.createElement("div");
         div.classList.add("producto");
         div.innerHTML = `
-            <img class="producto-imagen" src="${producto.imagen}" alt="">
+            <img class="producto-imagen" src="${producto.imagen}" alt=""${producto.titulo}"">
             <div class="producto-detalles">
-                    <h3 class="producto-titulo">Abrigo 01</h3>
-            
+                    <h3 class="producto-titulo">${producto.titulo}</h3>
+                    <p class="producto-precio">${producto.precio}</p>
+                    <button class="producto-agregar" id="${producto.id}">Agregar</button>
             </div>
-        
-        
-        `
+        `;
 
+        contenedorProductos.append(div);
     })
 }
+cargarProductos();
+
+/*Llamamos a todos los botones categorias */
+botonesCategorias.forEach(boton =>{
+    boton.addEventListener("click", (e) => {
+
+        botonesCategorias.forEach(boton => boton.classList.remove("active"));
+
+        e.currentTarget.classList.add("active");
+    })
+
+})
+
+
+
+
+
+
+
 
 
 
@@ -222,5 +243,9 @@ function login() {
     }
     
 }
+
+
+
+
 
 
