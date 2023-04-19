@@ -187,9 +187,13 @@ const productos = [
 /** Con este código llenaremos los productos del array al id #contenedor-productos */
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
+const tituloPrincipal =document.querySelector("#titulo-principal");
+let botonesAgregar = document.querySelectorAll(".producto-agregar");
 
-function cargarProductos(){
-    productos.forEach(producto => {
+function cargarProductos(productosElegidos){
+    contenedorProductos.innerHTML = "";
+
+    productosElegidos.forEach(producto => {
 
         const div = document.createElement("div");
         div.classList.add("producto");
@@ -205,7 +209,7 @@ function cargarProductos(){
         contenedorProductos.append(div);
     })
 }
-cargarProductos();
+cargarProductos(productos);
 
 /*Llamamos a todos los botones categorias */
 botonesCategorias.forEach(boton =>{
@@ -214,10 +218,25 @@ botonesCategorias.forEach(boton =>{
         botonesCategorias.forEach(boton => boton.classList.remove("active"));
 
         e.currentTarget.classList.add("active");
+
+        if(e.currentTarget.id != "todos"){
+            const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
+            console.log(productoCategoria);
+            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+
+            const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
+            cargarProductos(productosBoton);
+        } else{
+            tituloPrincipal.innerText = "Todos los productos";
+            cargarProductos(productos);
+
+        }      
     })
+});
 
-})
-
+function actualizarBotonesAgregar(){
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
+}
 
 
 
