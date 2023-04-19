@@ -223,7 +223,6 @@ botonesCategorias.forEach(boton =>{
 
         if(e.currentTarget.id != "todos"){
             const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
-            console.log(productoCategoria);
             tituloPrincipal.innerText = productoCategoria.categoria.nombre;
 
             const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
@@ -246,8 +245,22 @@ function actualizarBotonesAgregar(){
 }
 
 
+let productosEnCarrito;
 
-const productosEnCarrito = [];
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+
+
+if(productosEnCarritoLS){
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
+    actualizarNumerito();
+
+}else{
+    productosEnCarrito = [];
+}
+
+
+
+
 
 function agregarAlCarrito(e){
     const idBoton = e.currentTarget.id;
